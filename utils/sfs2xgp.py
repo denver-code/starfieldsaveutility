@@ -10,7 +10,7 @@ import uuid
 from typing import BinaryIO
 
 
-class Framework():
+class SFS2XGP():
     def __init__(self):
         self.container_location = "data/Packages/BethesdaSoftworks.ProjectGold_3275kfvn8vcwc"
         self.containers_index = None
@@ -41,7 +41,6 @@ class Framework():
 
     def load_containers_index(self):
         _p = r"%LOCALAPPDATA%\Packages\BethesdaSoftworks.ProjectGold_3275kfvn8vcwc"
-        _p = self.container_location
         if not os.path.exists(_p):
             print("Error: Could not find the package path. Make sure you have Xbox Starfield installed.")
             exit(2)
@@ -65,11 +64,6 @@ class Framework():
         self.containers_index = container_index
 
         return container_index
-
-
-    def xgp2sfs(self, save):
-        pass
-
 
     def backup(self):
         if not os.path.exists(self.container_location):
@@ -134,5 +128,6 @@ class Framework():
         container_file_list.write_container(container_content_path)
         print(f"Wrote new container to {container_content_path}")
 
+        # Update container index file
         self.containers_index.write_file(os.path.join(self.container_location, "SystemAppData", "wgs"))
         print("Updated container index")
