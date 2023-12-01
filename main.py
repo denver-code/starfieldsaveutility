@@ -19,7 +19,12 @@ def main():
     source_save_path = sys.argv[1]
 
     framework = Framework()
+
+    # Load source save
     framework.load_source_save(source_save_path)
+    #
+
+    framework.load_containers_index()
     framework.sfs2xgp()
 
 if __name__ == '__main__':
